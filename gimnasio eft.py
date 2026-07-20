@@ -16,6 +16,36 @@ inscripciones = {
 'F006': [18990, 15],
 }
 
+def busqueda_precio(p_min, p_max, diccionario,diccionario2):
+  lista=[]
+  if p_min>0 and p_min<p_max:
+    for clave, datos in diccionario.items():
+      if p_min<=datos[0]<=p_max and datos[1]>0:
+       lista=[diccionario2[clave][0],[clave]]
+       print(lista)
+    else:
+      print("No hay planes en ese rango de precios.")
+  else:
+    print("No hay planes en ese rango de precios.")
+
+def buscar_codigo(codigo, diccionario):
+  for clave in diccionario:
+    if clave==codigo.upper():
+      return True
+    else: 
+      return False
+
+def actualizar_precio(codigo,nuevo_precio,diccionario):
+  cod=codigo.upper()
+  if buscar_codigo(cod,diccionario):
+    for clave, datos in diccionario.items():
+      if clave == codigo.upper():
+        datos[0]=nuevo_precio
+        return True
+  else:
+    return False      
+
+
 def leer():
   try:
      opcion=int(input("Ingrese una opcion: "))
@@ -36,13 +66,8 @@ def cupos_tipo(plan,dicionario,diccionario2):
   if total>0:
         print(f"Planes disponibles: {total}") 
   else:
-      print("No hay planes disponibles")
-            
+    print("No hay planes disponibles")
       
-  
-  
-  
-
 def main():
  print("""
 ========== MENÚ PRINCIPAL ==========
@@ -59,5 +84,29 @@ def main():
    case 1:
      plan=input("Ingrese el plan: ").upper()
      cupos_tipo(plan,planes,inscripciones)
+   case 2:
+     while True:
+      try:
+         min=int(input("Ingrese precio minimo: "))
+         max=int(input("Ingrese precio maximo: "))
+      except ValueError:
+       print("Debe ingresar un numero entero")
+      else:
+        break
+      
+      busqueda_precio(min,max,inscripciones,planes)
+   case 3:
+      try:
+        cod=input("Ingrese codigo: ").upper()
+        prec=int(input("Ingrese nuevo precio: "))
+      except ValueError:
+        print("El precio debe ser un numero entero")
+      if actualizar_precio(cod,prec,inscripciones):
+        print("Precio cambiado")
+      else:
+        print("El codigo no existe")     
+     
+   
+     
     
 main()
