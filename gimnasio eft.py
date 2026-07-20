@@ -67,6 +67,69 @@ def cupos_tipo(plan,dicionario,diccionario2):
         print(f"Planes disponibles: {total}") 
   else:
     print("No hay planes disponibles")
+
+def codigo(codigo,diccionario):
+  if len(codigo.strip())>0 and codigo not in diccionario:
+    return True
+  else:
+    return False
+  
+def nombre(nombre):
+  if len(nombre.strip())>0:
+    return True
+  else:
+    return False
+  
+def tipo(tipo):
+  if tipo=="mensual" or tipo=="trimestral" or tipo=="anual":
+    return True
+  else:
+    return False
+  
+def duracion(duracion):
+  if int(duracion)>0 :
+    return True
+  else:
+    return False
+  
+def acceso(acceso):
+  if acceso=="s":
+    return True
+  else:
+    return False
+  
+def clases(clases):
+  if clases=="s":
+    return True
+  else:
+    return False
+  
+def horario(HORARIO):
+   if len(HORARIO.strip())>0:
+     return True
+   else:
+     return False
+   
+def precio(precio):
+  if precio>0 and int(precio):
+    return True
+  else:
+    return False
+  
+def cupos(cupos):
+  if cupos>=0:
+    return True
+  else:
+    return False
+  
+def agregar_plan(codigo, nombre, tipo, duracion, acceso_piscina, incluye_clases, horario, precio, cupos,diccionario,diccionario2):
+  diccionario[codigo][nombre, tipo, duracion, acceso_piscina, incluye_clases, horario,]
+  diccionario2[codigo][precio,cupos]
+
+
+
+
+  
       
 def main():
  print("""
@@ -103,10 +166,41 @@ def main():
         print("El precio debe ser un numero entero")
       if actualizar_precio(cod,prec,inscripciones):
         print("Precio cambiado")
+        print(inscripciones)
       else:
         print("El codigo no existe")     
-     
-   
+   case 4:
+     while True:
+       codi=input("Ingrese codigo: ").upper()
+       nombre=input("Ingrese nombre plan: ")
+       tipo= input("Ingrese tipo mensualidad: ")
+       duracion= int(input("Ingrese duracion: "))
+       acesso=input("Ingrese acesso s/n: ")
+       clases=input("Ingrese clases s/n: ")
+       horario=input("Ingrese horario: ")
+       precio=int(input("Ingrese precio: "))
+       cupos=int(input("Ingrese cupos: "))
+       if codigo(codi):
+         True
+       elif nombre(nombre):
+         True
+       elif tipo(tipo):
+         True
+       elif duracion(duracion):
+         True
+       elif acceso(acesso):
+         True
+       elif clases(clases):
+         True
+       elif horario(horario):
+         True
+       elif precio(precio):
+         True
+       elif cupos(cupos):
+         True
+       else:
+         print("dato invalido")
+         break
      
     
 main()
