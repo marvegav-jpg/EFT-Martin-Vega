@@ -126,6 +126,17 @@ def agregar_plan(codigo, nombre, tipo, duracion, acceso_piscina, incluye_clases,
   diccionario[codigo][nombre, tipo, duracion, acceso_piscina, incluye_clases, horario,]
   diccionario2[codigo][precio,cupos]
 
+def eliminar(codigo, diccionario,diccionario2):
+  if buscar_codigo(codigo,diccionario):
+    for clave in diccionario:
+      if clave==codigo:
+        del diccionario[codigo]
+        del diccionario2[codigo]
+        return True
+  else:
+    return False
+
+
 
 
 
@@ -200,7 +211,13 @@ def main():
          True
        else:
          print("dato invalido")
-         break
-     
+         
+   case 5:
+     codd=input("Ingrese codigo: ").upper()
+     if eliminar(codd,inscripciones,planes):
+       print("plan eliminado")
+       print(inscripciones)
+     else:
+       print("el codigo no existe")   
     
 main()
